@@ -1,0 +1,73 @@
+﻿<Page x:Class="MQTT_For_WPF.Pages.Main_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MQTT_For_WPF.Pages"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Main_Page">
+    <Grid>
+        <TabControl TabStripPlacement="Left" ui:TabControlHelper.IsAddTabButtonVisible="False">
+            <TabItem Header="数据可视化" Height="45">
+                <ui:TabItemHelper.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Home_12_Filled}"/>
+                </ui:TabItemHelper.Icon>
+                <Grid>
+                    <ListBox x:Name="Message_List" d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" Margin="0,50,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="605"/>
+                    <Button Content="发送" Margin="0,9,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="fs_" Height="33"/>
+                    <Label Content="发送信息" Margin="10,16,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="59"/>
+                    <TextBox x:Name="mess" Margin="74,10,308,0" TextWrapping="Wrap" Text="Message" Height="32" VerticalAlignment="Top"/>
+                    <Label Content="主题" Margin="0,16,218,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Right" Width="29"/>
+                    <ComboBox x:Name="zhutiComboBox" Margin="0,9,67,0" HorizontalAlignment="Right" Height="33" Width="146"/>
+                    <Button x:Name="_Fs" Content="其他" Margin="0,10,251,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="fs_File" Height="32"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="MQTT监听管理" Width="175" Height="45">
+                <ui:TabItemHelper.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Form_20_Filled}"/>
+                </ui:TabItemHelper.Icon>
+                <Grid x:Name="version_list">
+
+                    <Button Content="新建监听" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Click"/>
+                    <ListBox x:Name="Main_UAC_ListBox" Margin="0,50,0,0" Background="{x:Null}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Width="605"/>
+                    <Label Content="MQTT监听配置" Margin="18,10,0,0" VerticalContentAlignment="Center" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="147"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="天眼追踪系统" Width="175" Height="45">
+                <ui:TabItemHelper.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.People_12_Filled}"/>
+                </ui:TabItemHelper.Icon>
+                <Grid>
+                    <Button Content="添加人脸" Margin="0,10,10,0" VerticalAlignment="Top" Click="Button_Click_2" HorizontalAlignment="Right"/>
+                    <ListBox x:Name="tianyanzuizong" d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" Margin="0,50,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="605"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="日志" Width="175" Height="45">
+                <ui:TabItemHelper.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.WindowConsole_20_Filled}"/>
+                </ui:TabItemHelper.Icon>
+                <Grid>
+                    <TextBox x:Name="LogBox" Margin="10,10,10,10" TextWrapping="Wrap" Text="TextBox" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="设置" Width="175" Height="45">
+                <ui:TabItemHelper.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Settings_16_Filled}"/>
+                </ui:TabItemHelper.Icon>
+                <Grid>
+                    <Label Content="※窗口标题:" Margin="10,17,0,0" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81"/>
+                    <TextBox x:Name="title_TextBox" Margin="91,10,10,0" TextWrapping="Wrap" Text="MQTT For WPF By MinecraftYJQ_" d:LayoutOverrides="HorizontalAlignment" Height="32" VerticalAlignment="Top"/>
+                    <Button x:Name="Save_Setting" Content="保存设置" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="Save_Settings" HorizontalAlignment="Right" Height="37"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Margin="10,0,0,10" VerticalAlignment="Bottom" Width="37" Height="37" d:LayoutOverrides="HorizontalAlignment" Click="Button_Click_1">
+            <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.DarkTheme_20_Filled}" HorizontalAlignment="Center" Height="14" Width="28"/>
+        </Button>
+        <Button x:Name="start_MQTTBut" Content="启动MQTT" Margin="52,0,0,10" VerticalAlignment="Bottom" Click="start_MQTTBut_Click" Height="37" Width="133"/>
+
+    </Grid>
+</Page>
